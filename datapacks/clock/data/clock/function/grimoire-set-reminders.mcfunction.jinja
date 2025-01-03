@@ -1,0 +1,4 @@
+{% for i in player_indices() -%}
+data modify storage clock:grimoire players.player{{i}}.reminders set value []
+{% endfor %}
+function clock:grimoire-set-reminders-iterate-roles {current_role: 0}

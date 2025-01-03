@@ -1,0 +1,42 @@
+clear @s written_book[item_name="clock.game-setup-book"]
+
+{% set all_roles = get_roles('tb', 'sv', 'bmr', 'fabled', 'exp')|dictsort -%}
+
+{% set townsfolks = all_roles|select("is_role_type", "townsfolk") -%}
+{% set outsiders = all_roles|select("is_role_type", "outsider") -%}
+{% set minions = all_roles|select("is_role_type", "minion") -%}
+{% set demons = all_roles|select("is_role_type", "demon") -%}
+{% set travellers = all_roles|select("is_role_type", "traveller") -%}
+{% set fableds = all_roles|select("is_role_type", "fabled") -%}
+
+{% set pages -%}
+  [
+  {% set comma = joiner(",") %}
+  {% for page in chain(townsfolks, outsiders, minions, demons, travellers, fableds)|batch(14) %}
+    {{ comma() }}
+      {% filter min_json|sbnt_string %}
+  [
+    ""
+      {% for id, role in page %}
+    , {
+      "storage": "clock:roles",
+      "nbt": {{ (id + ".setup-name")|json }},
+      "interpret": true
+    },
+    "\n"
+      {% endfor %}
+  ]
+    {% endfilter %}
+  {% endfor %}
+  ]
+{% endset -%}
+
+{% set content -%}
+  {
+    pages: {{pages|min_sbnt}},
+    title: 'Setup roles',
+    author: ''
+  }
+{% endset -%}
+
+give @s written_book[written_book_content={{content|min_sbnt}},item_name="clock.game-setup-book"]

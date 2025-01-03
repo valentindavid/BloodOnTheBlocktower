@@ -1,0 +1,197 @@
+{%- set v_mark %}
+    {
+        "text": "☑",
+        "color": "green"
+    }
+{% endset -%}
+{%- set x_mark %}
+    {
+        "text": "☐",
+        "color": "red"
+    }
+{% endset -%}
+
+data modify storage clock:role-list roles set value []
+
+{% set all_roles = get_roles('tb', 'sv', 'bmr', 'fabled', 'exp')|dictsort -%}
+
+{% set townsfolks = all_roles|select("is_role_type", "townsfolk") -%}
+{% set outsiders = all_roles|select("is_role_type", "outsider") -%}
+{% set minions = all_roles|select("is_role_type", "minion") -%}
+{% set demons = all_roles|select("is_role_type", "demon") -%}
+{% set travellers = all_roles|select("is_role_type", "traveller") -%}
+{% set fableds = all_roles|select("is_role_type", "fabled") -%}
+
+{% for id, role in chain(townsfolks, outsiders, minions, demons, travellers, fableds) %}
+ {%- set name = role["name"] -%}
+ {%- set type = role["type"] -%}
+ {%- set description = role["description"] -%}
+
+  {%- if type in ["townsfolk"] -%}
+    {%- set color = "blue" %}
+    {%- set default_team = "good" %}
+  {%- elif type in ["outsider"] -%}
+    {%- set color = "dark_blue" %}
+    {%- set default_team = "good" %}
+  {%- elif type in ["minion"] -%}
+    {%- set color = "dark_red" %}
+    {%- set default_team = "evil" %}
+  {%- elif type in ["demon"] -%}
+    {%- set color = "red" %}
+    {%- set default_team = "evil" %}
+  {%- elif type in ["fabled"] -%}
+    {%- set color = "gold" %}
+    {%- set default_team = "evil" %}
+  {%- elif type in ["traveller"] -%}
+    {%- set color = "dark_purple" %}
+    {%- set default_team = "good" %}
+  {%- else -%}
+    {%- set color = "black" %}
+    {%- set default_team = "good" %}
+  {%- endif -%}
+
+  {%- set default_team_text %}
+  {%- if default_team == "good" %}
+      {
+        "text": "Good",
+        "color": "blue"
+      }
+  {%- else -%}
+      {
+        "text": "Evil",
+        "color": "red"
+      }
+  {%- endif -%}
+  {% endset %}
+
+  {%- set custom_name %}
+      {
+        "text": "{{name}}",
+        "color": "{{color}}",
+        "italic": false
+      }
+  {% endset -%}
+
+  {%- set definition %}
+      [
+        "",
+        {
+            "text": {{ type|capitalize|json }},
+            "color": {{ color|json }},
+            "bold": true
+        },
+        "\n",
+        {{ description|json }},
+        "\n"
+      ]
+  {% endset -%}
+
+  {%- set pretty_name %}
+      {
+        "text": {{ name|json }},
+        "color": {{ color|json }},
+        "hoverEvent": {
+          "action": "show_text",
+          "contents": {{ definition }}
+        }
+      }
+  {% endset -%}
+
+  {%- set lore %}
+    [
+      {% filter min_json|sbnt_string %}
+      {
+        "text": {{ type|capitalize|json }},
+        "color": {{color|json}}
+      }
+      {% endfilter %}
+    {% for line in (description|wordwrap(width=25)).splitlines() %}
+      , {{ line|json|sbnt_string }}
+    {% endfor %}
+    ]
+  {% endset -%}
+
+  {%- set components -%}
+      {
+        'minecraft:custom_name': {{ custom_name|min_json|sbnt_string }},
+        'minecraft:lore': {{ lore|min_sbnt }}
+      }
+  {%- endset -%}
+
+  {%- set add_role -%}
+    /function clock:add-role {role: {{ id|sbnt_string }}}
+  {%- endset -%}
+  {%- set click_name -%}
+      {
+        "clickEvent": {
+          "action": "run_command",
+          "value": {{ add_role|json }}
+        }
+      }
+  {%- endset -%}
+
+  {%- set setup_name = dict(click_name|parse_json, **(pretty_name|parse_json))|json -%}
+
+  {%- set toggle_script_role -%}
+    /function clock:toggle-script-role {role: {{ id|sbnt_string }}}
+  {%- endset -%}
+
+  {%- set checkbox -%}
+      {
+        "storage": "clock:roles",
+        "nbt": {{ (id ~ '.enabled-text') |json }},
+        "interpret": true,
+        "clickEvent": {
+          "action": "run_command",
+          "value": {{ toggle_script_role|json }}
+        }
+      }
+  {%- endset -%}
+
+  {%- set full_setup_name -%}
+      ["", {{ checkbox }}, {{ setup_name }}]
+  {%- endset -%}
+
+data modify storage clock:role-list reminders.{{id}} set value []
+{% for reminder_id, reminder_data in role.get("reminders", {}).items() -%}
+data modify storage clock:roles {{id}}.reminders.{{reminder_id}}.name set value {{ reminder_data["name"]|sbnt_string }}
+
+{% set unassign_reminder -%}
+/function clock:unassign-reminder {role: {{ id|sbnt_string }}, reminder: {{reminder_id}}}
+{%- endset -%}
+
+{% set reminder_text %}
+  [
+    "",
+    {
+      "text": "❌",
+      "clickEvent": {
+        "action": "run_command",
+        "value": {{ unassign_reminder|json }}
+      }
+    },
+    {{ reminder_data["name"] | json }},
+    "\n ",
+    {
+      "storage": "clock:roles",
+      "nbt": {{ (id ~ '.name') | json }},
+      "interpret": true
+    },
+    "\n"
+  ]
+{% endset -%}
+
+data modify storage clock:roles {{id}}.reminders.{{reminder_id}}.text set value {{ reminder_text|min_json|sbnt_string }}
+
+data modify storage clock:role-list reminders.{{id}} append value {{reminder_id}}
+{% endfor %}
+
+data modify storage clock:roles {{id}}.components set value {{ components|min_sbnt }}
+data modify storage clock:roles {{id}}.name set value {{ pretty_name|min_json|sbnt_string }}
+data modify storage clock:roles {{id}}.default_team set value {{ default_team|sbnt_string }}
+data modify storage clock:roles {{id}}.default_team_text set value {{ default_team_text|min_json|sbnt_string }}
+data modify storage clock:roles {{id}}.setup-name set value {{ full_setup_name|min_json|sbnt_string }}
+execute if data storage clock:roles {{id}}.enabled run data modify storage clock:roles {{id}}.enabled-text set value {{v_mark|min_json|sbnt_string}}
+execute unless data storage clock:roles {{id}}.enabled run data modify storage clock:roles {{id}}.enabled-text set value {{x_mark|min_json|sbnt_string}}
+data modify storage clock:role-list roles append value {{ id|sbnt_string }}
+{% endfor -%}

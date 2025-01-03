@@ -1,0 +1,76 @@
+clear @s written_book[item_name="clock.grimoire"]
+
+{% set comma = joiner(",") %}
+{% set pages %}
+  [
+{% for i in player_indices() -%}
+{{ comma() }}
+{% set change_role -%}
+/function clock:change-assignment {player: player{{i}}}
+{% endset -%}
+
+{% set toggle_team -%}
+/function clock:toggle-team {player: player{{i}}}
+{% endset -%}
+
+{% set add_reminder -%}
+/function clock:add-reminder {player: player{{i}}}
+{% endset -%}
+
+{% set goto_command -%}
+/function clock:goto-player {player: player{{ i }}}
+{% endset -%}
+
+{% filter min_json|sbnt_string %}
+  [
+    "",
+    {"selector": "@e[type=#clock:player,tag=clock.player{{ i }}]"},
+    {
+      "text": "➟",
+      "clickEvent": {
+        "action": "run_command",
+        "value": {{ goto_command | json }}
+      }
+    },
+    "\n",
+    {
+      "text": "✎",
+      "clickEvent": {
+        "action": "run_command",
+        "value": {{ change_role | json }}
+      }
+    },
+    {"storage": "clock:grimoire", "nbt": "players.player{{ i }}.role_name", "interpret": true}, "\n",
+    {
+      "text": "↺",
+      "clickEvent": {
+        "action": "run_command",
+        "value": {{ toggle_team | json }}
+      }
+    },
+    {"storage": "clock:grimoire", "nbt": "players.player{{ i }}.team_text", "interpret": true}, "\n",
+    {% for t in range(5) -%}
+    {"storage": "clock:grimoire", "nbt": "players.player{{ i }}.reminders[{{t}}]", "interpret": true},
+    {% endfor %}
+    {
+      "text": "[add reminder]",
+      "clickEvent": {
+        "action": "run_command",
+        "value": {{ add_reminder | json }}
+      }
+    }
+  ]
+{% endfilter -%}
+{% endfor -%}
+  ]
+{% endset -%}
+
+{%- set content %}
+  {
+    pages: {{pages}},
+    title: 'Grimoire',
+    author: ''
+  }
+{% endset -%}
+
+give @s written_book[written_book_content={{ content|min_sbnt }},item_name="clock.grimoire"]

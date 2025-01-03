@@ -1,0 +1,25 @@
+$execute if data storage clock:roles $(role).reminders.$(reminder).player run data modify storage clock:role-list add-reminder-current.other_player set from storage clock:roles $(role).reminders.$(reminder).player
+$execute if data storage clock:roles $(role).reminders.$(reminder).player run return run function clock:add-reminder-with-reminder-taken with storage clock:role-list add-reminder-current
+
+{% set command -%}
+/function clock:add-reminder-set-reminder {role: $(role), reminder: $(reminder), player: $(player)}
+{% endset %}
+
+{% set text %}
+{
+   "text": "",
+   "color": "green",
+   "extra": [
+     {
+       "storage": "clock:roles",
+       "nbt": "$(role).reminders.$(reminder).name"
+     }
+   ],
+   "clickEvent": {
+     "action": "run_command",
+     "value": {{ command | json }}
+   }
+}
+{% endset %}
+
+$tellraw @s {{ text | min_json }}

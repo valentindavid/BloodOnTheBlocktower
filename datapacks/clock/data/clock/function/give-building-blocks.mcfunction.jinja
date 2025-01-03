@@ -1,0 +1,31 @@
+clear @s item_frame[custom_data={'mapper:replace-me':true,'clock:clean-me':true}]
+
+{% macro give_item(item_name, function) -%}
+give @s minecraft:item_frame[custom_data={'mapper:replace-me':true,'clock:clean-me':true},entity_data={id:'minecraft:item_frame',Tags:['mapper.replace-me'],Item:{id:'minecraft:paper',components:{'minecraft:custom_data':{'mapper:function':{'namespace':'clock','function':{{ function|sbnt_string }}},'mapper:params':{{ caller()|min_sbnt }}}}}},item_name={{ item_name|json|sbnt_string }}]
+{% endmacro -%}
+
+{% for i in player_indices() -%}
+{% call give_item("Player light " ~ i, "set-player-light") %}
+{player: 'player{{ i }}', next: 'player{{ i%num_players()+1 }}'}
+{% endcall -%}
+{% endfor -%}
+
+{% for i in player_indices() -%}
+{% call give_item("Player lever " ~ i, "set-player-lever") %}
+{player: 'player{{ i }}'}
+{% endcall -%}
+{% endfor -%}
+
+{% for i in player_indices() -%}
+{% call give_item("Player sign " ~ i, "set-player-sign") %}
+{player: 'player{{ i }}'}
+{% endcall -%}
+{% endfor -%}
+
+{% call give_item("Guillotine", "set-point") %}
+{name: guillotine}
+{% endcall -%}
+
+{% call give_item("Bell", "set-point") %}
+{name: bell}
+{% endcall -%}

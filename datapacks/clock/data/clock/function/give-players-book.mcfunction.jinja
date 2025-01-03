@@ -1,0 +1,28 @@
+{% set page %}
+  [
+    "Story teller: ",
+    {
+      "selector": "@e[type=#clock:player,tag=clock.storyteller]"
+    },
+    "\n"
+  {% for i in player_indices() %}
+    ,
+    "{{ i }}: ",
+    {
+      "selector": "@e[type=#clock:player,tag=clock.player{{ i }}]"
+    },
+    "\n"
+  {% endfor %}
+  ]
+{% endset -%}
+
+{%- set content %}
+  {
+    pages: [{{ page|min_json|sbnt_string }}],
+    title: 'Players',
+    author: ''
+  }
+{% endset -%}
+
+clear @s written_book[item_name="clock.player-list"]
+give @s written_book[written_book_content={{ content|min_sbnt }},item_name="clock.player-list"]

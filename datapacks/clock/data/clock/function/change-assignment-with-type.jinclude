@@ -1,0 +1,54 @@
+{% macro change_assignment(type) %}
+
+{% set line %}
+  [
+    "Changing ",
+    {"selector": "@e[type=#clock:player,tag=clock.$(player)]"},
+    "..."
+  ]
+{% endset %}
+$tellraw @s {{ line|min_json }}
+
+{% set all_roles = get_roles('tb', 'sv', 'bmr', 'fabled', 'exp')|dictsort -%}
+
+{% set roles = all_roles|select("is_role_type", type) -%}
+
+{%- if type == "townsfolk" %}
+  {%- set color = "blue" %}
+{%- elif type == "outsider" -%}
+  {%- set color = "dark_blue" %}
+{%- elif type == "minion" -%}
+  {%- set color = "dark_red" %}
+{%- elif type == "demon" -%}
+  {%- set color = "red" %}
+{%- elif type == "traveller" -%}
+  {%- set color = "dark_purple" %}
+{%- elif type == "fabled" -%}
+  {%- set color = "gold" %}
+{%- else -%}
+  {%- set color = "black" %}
+{%- endif -%}
+
+{% for role, _ in roles -%}
+{% set command -%}
+/function clock:change-assignment-with-role {player: '$(player)', role: {{role|sbnt_string}}}
+{% endset -%}
+{% set line %}
+  {
+    "text": "",
+    "extra": [
+      {
+        "storage": "clock:roles",
+        "nbt": {{ (role ~ ".name")|json }},
+        "interpret": true
+      }
+    ],
+    "clickEvent": {
+      "action": "run_command",
+      "value": {{ command | json }}
+    }
+  }
+{% endset -%}
+$execute if data storage clock:roles {{(role ~ '.enabled')|sbnt_string}} run tellraw @s {{ line|min_json }}
+{% endfor %}
+{% endmacro %}

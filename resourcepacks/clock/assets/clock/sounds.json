@@ -1,0 +1,17 @@
+{
+    "ambient.vine-boom": {
+        "sounds": [
+            "clock:ambient/vine-boom"
+        ]
+    },
+    "ambient.womp-womp": {
+        "sounds": [
+            "clock:ambient/womp-womp"
+        ]
+    },
+    "ambient.ding": {
+        "sounds": [
+            "clock:ambient/ding"
+        ]
+    }
+}

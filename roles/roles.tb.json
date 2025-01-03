@@ -1,0 +1,221 @@
+{
+  "washerwoman": {
+    "name": "Washerwoman",
+    "type": "townsfolk",
+    "description": "You start knowing that 1 of 2 players is a particular Townsfolk.",
+    "reminders": {
+      "townsfolk": {
+        "name": "TOWNSFOLK"
+      },
+      "wrong": {
+        "name": "WRONG"
+      }
+    }
+  },
+  "librarian": {
+    "name": "Librarian",
+    "type": "townsfolk",
+    "description": "You start knowing that 1 of 2 players is a particular Outsider. (Or that zero are in play.)",
+    "reminders": {
+      "outsider": {
+        "name": "OUTSIDER"
+      },
+      "wrong": {
+        "name": "WRONG"
+      }
+    }
+  },
+  "investigator": {
+    "name": "Investigator",
+    "type": "townsfolk",
+    "description": "You start knowing that 1 of 2 players is a particular Minion.",
+    "reminders": {
+      "minion": {
+        "name": "MINION"
+      },
+      "wrong": {
+        "name": "WRONG"
+      }
+    }
+  },
+  "chef": {
+    "name": "Chef",
+    "type": "townsfolk",
+    "description": "You start knowing how many pairs of evil players there are."
+  },
+  "empath": {
+    "name": "Empath",
+    "type": "townsfolk",
+    "description": "Each night, you learn how many of your 2 alive neighbors are evil."
+  },
+  "fortuneteller": {
+    "name": "Fortune Teller",
+    "type": "townsfolk",
+    "description": "Each night, choose 2 players: you learn if either is a Demon. There is a good player that registers as a Demon to you.",
+    "reminders": {
+      "red_herring": {
+        "name": "RED HERRING"
+      }
+    }
+  },
+  "undertaker": {
+    "name": "Undertaker",
+    "type": "townsfolk",
+    "description": "Each night*, you learn which character died by execution today.",
+    "reminders": {
+      "died_today": {
+        "name": "DIED TODAY"
+      }
+    }
+  },
+  "monk": {
+    "name": "Monk",
+    "type": "townsfolk",
+    "description": "Each night*, choose a player (not yourself): they are safe from the Demon tonight.",
+    "reminders": {
+      "safe": {
+        "name": "SAFE"
+      }
+    }
+  },
+  "ravenkeeper": {
+    "name": "Ravenkeeper",
+    "type": "townsfolk",
+    "description": "If you die at night, you are woken to choose a player: you learn their character."
+  },
+  "virgin": {
+    "name": "Virgin",
+    "type": "townsfolk",
+    "description": "The 1st time you are nominated, if the nominator is a Townsfolk, they are executed immediately.",
+    "reminders": {
+      "no_ability": {
+        "name": "NO ABILITY"
+      }
+    }
+  },
+  "slayer": {
+    "name": "Slayer",
+    "type": "townsfolk",
+    "description": "Once per game, during the day, publicly choose a player: if they are the Demon, they die.",
+    "reminders": {
+      "no_ability": {
+        "name": "NO ABILITY"
+      }
+    }
+  },
+  "soldier": {
+    "name": "Soldier",
+    "type": "townsfolk",
+    "description": "You are safe from the Demon."
+  },
+  "mayor": {
+    "name": "Mayor",
+    "type": "townsfolk",
+    "description": "If only 3 players live & no execution occurs, your team wins. If you die at night, another player might die instead."
+  },
+  "butler": {
+    "name": "Butler",
+    "type": "outsider",
+    "description": "Each night, choose a player (not yourself): tomorrow, you may only vote if they are voting too.",
+    "reminders": {
+      "master": {
+        "name": "MASTER"
+      }
+    }
+  },
+  "drunk": {
+    "name": "Drunk",
+    "type": "outsider",
+    "description": "You do not know you are the Drunk. You think you are a Townsfolk character, but you are not.",
+    "reminders": {
+      "is_the_drunk": {
+        "name": "IS THE DRUNK"
+      }
+    }
+  },
+  "recluse": {
+    "name": "Recluse",
+    "type": "outsider",
+    "description": "You might register as evil & as a Minion or Demon, even if dead."
+  },
+  "saint": {
+    "name": "Saint",
+    "type": "outsider",
+    "description": "If you die by execution, your team loses."
+  },
+  "poisoner": {
+    "name": "Poisoner",
+    "type": "minion",
+    "description": "Each night, choose a player: they are poisoned tonight and tomorrow day.",
+    "reminders": {
+      "poisoned": {
+        "name": "POISONED"
+      }
+    }
+  },
+  "spy": {
+    "name": "Spy",
+    "type": "minion",
+    "description": "Each night, you see the Grimoire. You might register as good & as a Townsfolk or Outsider, even if dead."
+  },
+  "scarletwoman": {
+    "name": "Scarlet Woman",
+    "type": "minion",
+    "description": "If there are 5 or more players alive & the Demon dies, you become the Demon. (Travellers don't count)",
+    "reminders": {
+      "is_the_demon": {
+        "name": "IS THE DEMON"
+      }
+    }
+  },
+  "baron": {
+    "name": "Baron",
+    "type": "minion",
+    "description": "There are extra Outsiders in play. [+2 Outsiders]"
+  },
+  "imp": {
+    "name": "Imp",
+    "type": "demon",
+    "description": "Each night*, choose a player: they die. If you kill yourself this way, a Minion becomes the Imp.",
+    "reminders": {
+      "dead": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "scapegoat": {
+    "name": "Scapegoat",
+    "type": "traveller",
+    "description": "If a player of your alignment is executed, you might be executed instead."
+  },
+  "gunslinger": {
+    "name": "Gunslinger",
+    "type": "traveller",
+    "description": "Each day, after the 1st vote has been tallied, you may choose a player that voted: they die."
+  },
+  "beggar": {
+    "name": "Beggar",
+    "type": "traveller",
+    "description": "You must use a vote token to vote. If a dead player gives you theirs, you learn their alignment. You are sober and healthy."
+  },
+  "bureaucrat": {
+    "name": "Bureaucrat",
+    "type": "traveller",
+    "description": "Each night, choose a player (not yourself): their vote counts as 3 votes tomorrow.",
+    "reminders": {
+      "three_votes": {
+        "name": "3 VOTES"
+      }
+    }
+  },
+  "thief": {
+    "name": "Thief",
+    "type": "traveller",
+    "description": "Each night, choose a player (not yourself): their vote counts negatively tomorrow.",
+    "reminders": {
+      "negative_vote": {
+        "name": "NEGATIVE VOTE"
+      }
+    }
+  }
+}

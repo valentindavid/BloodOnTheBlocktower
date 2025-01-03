@@ -1,0 +1,3 @@
+{% for i in player_indices() -%}
+execute as @e[type=#clock:player,tag=clock.player{{ i }}] run function clock:revive-player
+{% endfor -%}

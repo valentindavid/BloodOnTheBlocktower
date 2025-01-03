@@ -1,0 +1,334 @@
+{
+  "grandmother": {
+    "name": "Grandmother",
+    "type": "townsfolk",
+    "description": "You start knowing a good player & their character. If the Demon kills them, you die too.",
+    "reminders": {
+      "grandchild": {
+        "name": "GRANDCHILD"
+      },
+      "dead": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "sailor": {
+    "name": "Sailor",
+    "type": "townsfolk",
+    "description": "Each night, choose an alive player: either you or they are drunk until dusk. You can't die.",
+    "reminders": {
+      "drunk": {
+        "name": "DRUNK"
+      }
+    }
+  },
+  "chambermaid": {
+    "name": "Chambermaid",
+    "type": "townsfolk",
+    "description": "Each night, choose 2 alive players (not yourself): you learn how many woke tonight due to their ability."
+  },
+  "exorcist": {
+    "name": "Exorcist",
+    "type": "townsfolk",
+    "description": "Each night*, choose a player (different to last night): the Demon, if chosen, learns who you are then doesn't wake tonight.",
+    "reminders": {
+      "chosen": {
+        "name": "CHOSEN"
+      }
+    }
+  },
+  "innkeeper": {
+    "name": "Innkeeper",
+    "type": "townsfolk",
+    "description": "Each night*, choose 2 players: they can't die tonight, but 1 is drunk until dusk.",
+    "reminders": {
+      "safe": {
+        "name": "SAFE"
+      },
+      "safe_2": {
+        "name": "SAFE"
+      },
+      "drunk": {
+        "name": "DRUNK"
+      }
+    }
+  },
+  "gambler": {
+    "name": "Gambler",
+    "type": "townsfolk",
+    "description": "Each night*, choose a player & guess their character: if you guess wrong, you die.",
+    "reminders": {
+      "dead": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "gossip": {
+    "name": "Gossip",
+    "type": "townsfolk",
+    "description": "Each day, you may make a public statement. Tonight, if it was true, a player dies.",
+    "reminders": {
+      "dead": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "courtier": {
+    "name": "Courtier",
+    "type": "townsfolk",
+    "description": "Once per game, at night, choose a character: they are drunk for 3 nights & 3 days.",
+    "reminders": {
+      "drunk_one": {
+        "name": "DRUNK 1"
+      },
+      "drunk_two": {
+        "name": "DRUNK 2"
+      },
+      "drunk_three": {
+        "name": "DRUNK 3"
+      },
+      "no_ability": {
+        "name": "NO ABILITY"
+      }
+    }
+  },
+  "professor": {
+    "name": "Professor",
+    "type": "townsfolk",
+    "description": "Once per game, at night*, choose a dead player: if they are a Townsfolk, they are resurrected.",
+    "reminders": {
+      "alive": {
+        "name": "ALIVE"
+      },
+      "no_ability": {
+        "name": "NO ABILITY"
+      }
+    }
+  },
+  "minstrel": {
+    "name": "Minstrel",
+    "type": "townsfolk",
+    "description": "When a Minion dies by execution, all other players (except Travellers) are drunk until dusk tomorrow.",
+    "reminders": {
+      "everyone_is_drunk": {
+        "name": "EVERYONE IS DRUNK"
+      }
+    }
+  },
+  "tealady": {
+    "name": "Tea Lady",
+    "type": "townsfolk",
+    "description": "If both your alive neighbors are good, they can't die.",
+    "reminders": {
+      "cannot_die": {
+        "name": "CANNOT DIE"
+      },
+      "cannot_die_2": {
+        "name": "CANNOT DIE"
+      }
+    }
+  },
+  "pacifist": {
+    "name": "Pacifist",
+    "type": "townsfolk",
+    "description": "Executed good players might not die."
+  },
+  "fool": {
+    "name": "Fool",
+    "type": "townsfolk",
+    "description": "The 1st time you die, you don't.",
+    "reminders": {
+      "no_ability": {
+        "name": "NO ABILITY"
+      }
+    }
+  },
+  "goon": {
+    "name": "Goon",
+    "type": "outsider",
+    "description": "Each night, the 1st player to choose you with their ability is drunk until dusk. You become their alignment.",
+    "reminders": {
+      "drunk": {
+        "name": "DRUNK"
+      }
+    }
+  },
+  "lunatic": {
+    "name": "Lunatic",
+    "type": "outsider",
+    "description": "You think you are a Demon, but you are not. The Demon knows who you are & who you choose at night.",
+    "reminders": {
+      "chosen": {
+        "name": "CHOSEN"
+      },
+      "chosen_2": {
+        "name": "CHOSEN"
+      },
+      "chosen_3": {
+        "name": "CHOSEN"
+      }
+    }
+  },
+  "tinker": {
+    "name": "Tinker",
+    "type": "outsider",
+    "description": "You might die at any time.",
+    "reminders": {
+      "dead": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "moonchild": {
+    "name": "Moonchild",
+    "type": "outsider",
+    "description": "When you learn that you died, publicly choose 1 alive player. Tonight, if it was a good player, they die.",
+    "reminders": {
+      "dead": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "godfather": {
+    "name": "Godfather",
+    "type": "minion",
+    "description": "You start knowing which Outsiders are in play. If 1 died today, choose a player tonight: they die. [-1 or +1 Outsider]",
+    "reminders": {
+      "died_today": {
+        "name": "DIED TODAY"
+      },
+      "dead": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "devilsadvocate": {
+    "name": "Devil's Advocate",
+    "type": "minion",
+    "description": "Each night, choose a living player (different to last night): if executed tomorrow, they don't die.",
+    "reminders": {
+      "survives_execution": {
+        "name": "SURVIVES EXECUTION"
+      }
+    }
+  },
+  "assassin": {
+    "name": "Assassin",
+    "type": "minion",
+    "description": "Once per game, at night*, choose a player: they die, even if for some reason they could not.",
+    "reminders": {
+      "dead": {
+        "name": "DEAD"
+      },
+      "no_ability": {
+        "name": "NO ABILITY"
+      }
+    }
+  },
+  "mastermind": {
+    "name": "Mastermind",
+    "type": "minion",
+    "description": "If the Demon dies by execution (ending the game), play for 1 more day. If a player is then executed, their team loses."
+  },
+  "zombuul": {
+    "name": "Zombuul",
+    "type": "demon",
+    "description": "Each night*, if no-one died today, choose a player: they die. The 1st time you die, you live but register as dead.",
+    "reminders": {
+      "died_today": {
+        "name": "DIED TODAY"
+      },
+      "dead": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "pukka": {
+    "name": "Pukka",
+    "type": "demon",
+    "description": "Each night, choose a player: they are poisoned. The previously poisoned player dies then becomes healthy.",
+    "reminders": {
+      "poisoned": {
+        "name": "POISONED"
+      },
+      "dead": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "shabaloth": {
+    "name": "Shabaloth",
+    "type": "demon",
+    "description": "Each night*, choose 2 players: they die. A dead player you chose last night might be regurgitated.",
+    "reminders": {
+      "dead": {
+        "name": "DEAD"
+      },
+      "dead_2": {
+        "name": "DEAD"
+      },
+      "alive": {
+        "name": "ALIVE"
+      }
+    }
+  },
+  "po": {
+    "name": "Po",
+    "type": "demon",
+    "description": "Each night*, you may choose a player: they die. If your last choice was no-one, choose 3 players tonight.",
+    "reminders": {
+      "three_attacks": {
+        "name": "3 ATTACKS"
+      },
+      "dead": {
+        "name": "DEAD"
+      },
+      "dead_2": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "apprentice": {
+    "name": "Apprentice",
+    "type": "traveller",
+    "description": "On your 1st night, you gain a Townsfolk ability (if good) or a Minion ability (if evil).",
+    "reminders": {
+      "is_the_apprentice": {
+        "name": "IS THE APPRENTICE"
+      }
+    }
+  },
+  "matron": {
+    "name": "Matron",
+    "type": "traveller",
+    "description": "Each day, you may choose up to 3 sets of 2 players to swap seats. Players may not leave their seats to talk in private."
+  },
+  "voudon": {
+    "name": "Voudon",
+    "type": "traveller",
+    "description": "Only you & the dead can vote. They don't need a vote token to do so. A 50% majority isn't required."
+  },
+  "judge": {
+    "name": "Judge",
+    "type": "traveller",
+    "description": "Once per game, if another player nominated, you may choose to force the current execution to pass or fail.",
+    "reminders": {
+      "no_ability": {
+        "name": "NO ABILITY"
+      }
+    }
+  },
+  "bishop": {
+    "name": "Bishop",
+    "type": "traveller",
+    "description": "Only the Storyteller can nominate. At least 1 opposing player must be nominated each day.",
+    "reminders": {
+      "nominate_evil": {
+        "name": "NOMINATE EVIL"
+      },
+      "nominate_good": {
+        "name": "NOMINATE GOOD"
+      }
+    }
+  }
+}

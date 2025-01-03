@@ -1,0 +1,44 @@
+{% set line %}
+  [
+    "Changing ",
+    {"selector": "@e[type=#clock:player,tag=clock.$(player)]"},
+    "..."
+  ]
+{% endset %}
+$tellraw @s {{ line|min_json }}
+
+{% for type in ["townsfolk", "outsider", "minion", "demon", "traveller", "fabled"] -%}
+  {%- if type == "townsfolk" -%}
+    {%- set color = "blue" %}
+  {%- elif type == "outsider" -%}
+    {%- set color = "dark_blue" %}
+  {%- elif type == "minion" -%}
+    {%- set color = "dark_red" %}
+  {%- elif type == "demon" -%}
+    {%- set color = "red" %}
+  {%- elif type == "traveller" %}
+    {%- set color = "dark_purple" %}
+  {%- elif type == "fabled" -%}
+    {%- set color = "gold" %}
+  {%- else -%}
+    {%- set color = "black" %}
+  {%- endif -%}
+
+{% set command -%}
+/function clock:change-assignment-with-{{type}} {player: '$(player)'}
+{% endset -%}
+{% set line %}
+  [
+    "",
+    {
+      "text": {{ type|capitalize|json }},
+      "color": {{ color|json }},
+      "clickEvent": {
+        "action": "run_command",
+        "value": {{ command | json }}
+      }
+    }
+  ]
+{% endset -%}
+$tellraw @s {{ line|min_json }}
+{% endfor %}

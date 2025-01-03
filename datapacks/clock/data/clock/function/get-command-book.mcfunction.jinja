@@ -1,0 +1,319 @@
+{% set contents %}
+  [
+    "",
+    {
+      "text": "Votes",
+      "clickEvent": {
+        "action": "change_page",
+        "value": "2"
+      }
+    },
+    "\n",
+    {
+      "text": "Nomination",
+      "clickEvent": {
+        "action": "change_page",
+        "value": "3"
+      }
+    },
+    "\n",
+    {
+      "text": "Time",
+      "clickEvent": {
+        "action": "change_page",
+         "value": "4"
+      }
+    },
+    "\n",
+    {
+      "text": "Kills",
+      "clickEvent": {
+        "action": "change_page",
+        "value": "5"
+      }
+    },
+    "\n",
+    {
+      "text": "Set players",
+      "clickEvent": {
+        "action": "change_page",
+        "value": "6"
+      }
+    },
+    "\n",
+    {
+      "text": "Teleport",
+      "clickEvent": {
+        "action": "change_page",
+        "value": "7"
+      }
+    },
+    "\n",
+    {
+      "text": "Roles",
+      "clickEvent": {
+        "action": "change_page",
+        "value": "8"
+      }
+    }
+  ]
+{% endset -%}
+
+{% set votes %}
+  [
+    "",
+    {
+      "text": "Votes",
+      "bold": true
+    },
+    "\n",
+    {
+      "text": "Reset votes",
+      "clickEvent": {
+        "action": "run_command",
+        "value": "/function clock:reset-votes"
+      }
+    },
+    "\n",
+    {
+      "text": "Start votes",
+      "clickEvent": {
+        "action": "run_command",
+        "value": "/function clock:start-voting-auto"
+      }
+    },
+    "\n"
+  ]
+{% endset -%}
+
+{% set nominations %}
+  [
+    "",
+    {
+      "text": "Nomination",
+      "bold": true
+    },
+    "\n"
+  {% for i in player_indices() %}
+    ,
+    {% set params %}
+      {player: 'player{{ i }}'}
+    {% endset %}
+    {% set nominate_cmd -%}
+      /function clock:nominate {{ params|min_sbnt }}
+    {%- endset %}
+    {% set nominate_cmd -%}
+      /function clock:nominate {{ params|min_sbnt }}
+    {%- endset %}
+      {
+        "text": "{{ i }}: ",
+        "clickEvent": {
+            "action": "run_command",
+            "value": {{ nominate_cmd|json }}
+        }
+      },
+      {
+        "selector": "@e[type=#clock:player,tag=clock.player{{ i }}]",
+        "clickEvent": {
+            "action": "run_command",
+            "value": {{ nominate_cmd|json }}
+        }
+      },
+      "\n"
+  {% endfor %}
+  ]
+{% endset -%}
+
+{% set time %}
+  [
+    "",
+    {
+        "text": "Time",
+        "bold": true
+    },
+    "\n"
+  {% for name, id in [("Morning", "morning"), ("Discussion", "noon"), ("Nominations & votes", "evening"), ("Night", "night")] %}
+    ,
+    {% set params %}
+      {name: {{ id|sbnt_string }}}
+    {% endset %}
+    {% set command -%}
+      /function clock:set-time-name {{ params|min_sbnt }}
+    {%- endset %}
+    {
+      "text": {{ name|json }},
+      "clickEvent": {
+        "action": "run_command",
+        "value": {{ command|json }}
+      }
+    },
+    "\n"
+  {% endfor %}
+  ]
+{% endset -%}
+
+{% set kills %}
+  [
+    "",
+    {
+        "text": "Kills",
+        "bold": true
+    },
+    "\n",
+    {
+      "text": "Activate guillotine",
+      "clickEvent": {
+        "action": "run_command",
+        "value": "/function clock:guillotine"
+      }
+    },
+    "\n",
+    {
+      "text": "Cancel execution",
+      "clickEvent": {
+        "action": "run_command",
+        "value": "/function clock:cancel-execution"
+      }
+    },
+    "\n"
+  {% for i in player_indices() %}
+    ,
+    {% set command -%}
+      /execute as @e[type=#clock:player,tag=clock.player{{ i }}] run function clock:kill-player
+    {%- endset %}
+    {
+      "text": "Kill {{ i }}: ",
+      "clickEvent": {
+        "action": "run_command",
+        "value": {{ command | json }}
+      }
+    },
+    {
+      "selector": "@e[type=#clock:player,tag=clock.player{{ i }}]",
+      "clickEvent": {
+        "action": "run_command",
+        "value": {{ command | json }}
+      }
+    },
+    "\n"
+  {% endfor %}
+    ,
+    {
+      "text": "Revive everybody",
+      "clickEvent": {
+        "action": "run_command",
+        "value": "/function clock:revive-everyone"
+      }
+    }
+  ]
+{% endset -%}
+
+{% set players %}
+  [
+    "",
+    {
+        "text": "Players",
+        "bold": true
+    },
+    "\n",
+    {
+      "text": "Set self as story teller",
+      "clickEvent": {
+        "action": "run_command",
+        "value": "/function clock:set-self-storyteller"
+      }
+    },
+    "\n"
+  {% for i in player_indices() %}
+    ,
+    {% set params %}
+      {player: 'player{{ i }}'}
+    {% endset %}
+    {% set command -%}
+      /function clock:set-player {{ params|min_sbnt }}
+    {%- endset %}
+    {
+      "text": "Set player {{ i }}",
+      "clickEvent": {
+          "action": "run_command",
+          "value": {{ command | json }}
+        }
+    },
+    "\n"
+  {% endfor %}
+  ]
+{% endset -%}
+
+{% set teleport %}
+  [
+    "",
+    {
+        "text": "Teleport to...",
+        "bold": true
+    },
+    "\n"
+  {% for i in player_indices() %}
+    , "{{ i }}: ",
+    {% set params %}
+      {player: 'player{{ i }}'}
+    {% endset %}
+    {% set command -%}
+      /function clock:goto-player {{ params|min_sbnt }}
+    {%- endset %}
+    {
+      "selector": "@e[type=#clock:player,tag=clock.player{{ i }}]",
+      "clickEvent": {
+          "action": "run_command",
+          "value": {{ command | json }}
+        }
+    },
+    "\n"
+  {% endfor %}
+  ]
+{% endset -%}
+
+{% set roles %}
+  [
+    "",
+    {
+      "text": "Assign roles",
+      "bold": true
+    },
+    "\n",
+    {
+      "text": "Destroy role tokens",
+      "clickEvent": {
+          "action": "run_command",
+          "value": "/function clock:destroy-role-tokens"
+      }
+    },
+    "\n",
+    {
+      "text": "Distribute role tokens",
+      "clickEvent": {
+          "action": "run_command",
+          "value": "/function clock:pick-random-roles"
+      }
+    }
+  ]
+{% endset -%}
+
+{% set content %}
+  {
+    pages: [
+      {{ contents|min_json|sbnt_string }},
+      {{ votes|min_json|sbnt_string }},
+      {{ nominations|min_json|sbnt_string }},
+      {{ time|min_json|sbnt_string }},
+      {{ kills|min_json|sbnt_string }},
+      {{ players|min_json|sbnt_string }},
+      {{ teleport|min_json|sbnt_string }},
+      {{ roles|min_json|sbnt_string }}
+    ],
+    title: 'Blood on the Clocktower commands',
+    author: ''
+  }
+{% endset -%}
+
+clear @s written_book[item_name="clock.command-book"]
+give @s written_book[written_book_content={{ content|min_sbnt }},item_name="clock.command-book"]

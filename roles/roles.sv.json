@@ -1,0 +1,318 @@
+{
+  "clockmaker": {
+    "name": "Clockmaker",
+    "type": "townsfolk",
+    "description": "You start knowing how many steps from the Demon to its nearest Minion."
+  },
+  "dreamer": {
+    "name": "Dreamer",
+    "type": "townsfolk",
+    "description": "Each night, choose a player (not yourself or Travellers): you learn 1 good & 1 evil character, 1 of which is correct."
+  },
+  "snakecharmer": {
+    "name": "Snake Charmer",
+    "type": "townsfolk",
+    "description": "Each night, choose an alive player: a chosen Demon swaps characters & alignments with you & is then poisoned.",
+    "reminders": {
+      "poisoned": {
+        "name": "POISONED"
+      }
+    }
+  },
+  "mathematician": {
+    "name": "Mathematician",
+    "type": "townsfolk",
+    "description": "Each night, you learn how many players' abilities worked abnormally (since dawn) due to another character's ability.",
+    "reminders": {
+      "abnormal": {
+        "name": "ABNORMAL"
+      },
+      "abnormal_2": {
+        "name": "ABNORMAL"
+      },
+      "abnormal_3": {
+        "name": "ABNORMAL"
+      },
+      "abnormal_4": {
+        "name": "ABNORMAL"
+      },
+      "abnormal_5": {
+        "name": "ABNORMAL"
+      }
+    }
+  },
+  "flowergirl": {
+    "name": "Flowergirl",
+    "type": "townsfolk",
+    "description": "Each night*, you learn if a Demon voted today.",
+    "reminders": {
+      "demon_not_voted": {
+        "name": "DEMON NOT VOTED"
+      },
+      "demon_voted": {
+        "name": "DEMON VOTED"
+      }
+    }
+  },
+  "towncrier": {
+    "name": "Town Crier",
+    "type": "townsfolk",
+    "description": "Each night*, you learn if a Minion nominated today.",
+    "reminders": {
+      "minions_not_nominated": {
+        "name": "MINIONS NOT NOMINATED"
+      },
+      "minion_nominated": {
+        "name": "MINION NOMINATED"
+      }
+    }
+  },
+  "oracle": {
+    "name": "Oracle",
+    "type": "townsfolk",
+    "description": "Each night*, you learn how many dead players are evil."
+  },
+  "savant": {
+    "name": "Savant",
+    "type": "townsfolk",
+    "description": "Each day, you may visit the Storyteller to learn 2 things in private: 1 is true & 1 is false."
+  },
+  "seamstress": {
+    "name": "Seamstress",
+    "type": "townsfolk",
+    "description": "Once per game, at night, choose 2 players (not yourself): you learn if they are the same alignment.",
+    "reminders": {
+      "no_ability": {
+        "name": "NO ABILITY"
+      }
+    }
+  },
+  "philosopher": {
+    "name": "Philosopher",
+    "type": "townsfolk",
+    "description": "Once per game, at night, choose a good character: gain that ability. If this character is in play, they are drunk.",
+    "reminders": {
+      "is_the_philosopher": {
+        "name": "IS THE PHILOSOPHER"
+      },
+      "drunk": {
+        "name": "DRUNK"
+      }
+    }
+  },
+  "artist": {
+    "name": "Artist",
+    "type": "townsfolk",
+    "description": "Once per game, during the day, privately ask the Storyteller any yes/no question.",
+    "reminders": {
+      "no_ability": {
+        "name": "NO ABILITY"
+      }
+    }
+  },
+  "juggler": {
+    "name": "Juggler",
+    "type": "townsfolk",
+    "description": "On your 1st day, publicly guess up to 5 players' characters. That night, you learn how many you got correct.",
+    "reminders": {
+      "correct": {
+        "name": "CORRECT"
+      },
+      "correct_2": {
+        "name": "CORRECT"
+      },
+      "correct_3": {
+        "name": "CORRECT"
+      },
+      "correct_4": {
+        "name": "CORRECT"
+      },
+      "correct_5": {
+        "name": "CORRECT"
+      }
+    }
+  },
+  "sage": {
+    "name": "Sage",
+    "type": "townsfolk",
+    "description": "If the Demon kills you, you learn that it is 1 of 2 players."
+  },
+  "mutant": {
+    "name": "Mutant",
+    "type": "outsider",
+    "description": "If you are \"mad\" about being an Outsider, you might be executed."
+  },
+  "sweetheart": {
+    "name": "Sweetheart",
+    "type": "outsider",
+    "description": "When you die, 1 player is drunk from now on.",
+    "reminders": {
+      "drunk": {
+        "name": "DRUNK"
+      }
+    }
+  },
+  "barber": {
+    "name": "Barber",
+    "type": "outsider",
+    "description": "If you died today or tonight, the Demon may choose 2 players (not another Demon) to swap characters.",
+    "reminders": {
+      "haircuts_tonight": {
+        "name": "HAIRCUTS TONIGHT"
+      }
+    }
+  },
+  "klutz": {
+    "name": "Klutz",
+    "type": "outsider",
+    "description": "When you learn that you died, publicly choose 1 alive player: if they are evil, your team loses."
+  },
+  "eviltwin": {
+    "name": "Evil Twin",
+    "type": "minion",
+    "description": "You & an opposing player know each other. If the good player is executed, evil wins. Good can't win if you both live.",
+    "reminders": {
+      "twin": {
+        "name": "TWIN"
+      }
+    }
+  },
+  "witch": {
+    "name": "Witch",
+    "type": "minion",
+    "description": "Each night, choose a player: if they nominate tomorrow, they die. If just 3 players live, you lose this ability.",
+    "reminders": {
+      "cursed": {
+        "name": "CURSED"
+      }
+    }
+  },
+  "cerenovus": {
+    "name": "Cerenovus",
+    "type": "minion",
+    "description": "Each night, choose a player & a good character: they are \"mad\" they are this character tomorrow, or might be executed.",
+    "reminders": {
+      "mad": {
+        "name": "MAD"
+      }
+    }
+  },
+  "pithag": {
+    "name": "Pit-Hag",
+    "type": "minion",
+    "description": "Each night*, choose a player & a character they become (if not in play). If a Demon is made, deaths tonight are arbitrary."
+  },
+  "fanggu": {
+    "name": "Fang Gu",
+    "type": "demon",
+    "description": "Each night*, choose a player: they die. The 1st Outsider this kills becomes an evil Fang Gu & you die instead. [+1 Outsider]",
+    "reminders": {
+      "dead": {
+        "name": "DEAD"
+      },
+      "once": {
+        "name": "ONCE"
+      }
+    }
+  },
+  "vigormortis": {
+    "name": "Vigormortis",
+    "type": "demon",
+    "description": "Each night*, choose a player: they die. Minions you kill keep their ability & poison 1 Townsfolk neighbor. [-1 Outsider]",
+    "reminders": {
+      "dead": {
+        "name": "DEAD"
+      },
+      "has_ability": {
+        "name": "HAS ABILITY"
+      },
+      "has_ability_2": {
+        "name": "HAS ABILITY"
+      },
+      "has_ability_3": {
+        "name": "HAS ABILITY"
+      },
+      "poisoned": {
+        "name": "POISONED"
+      }
+    }
+  },
+  "nodashii": {
+    "name": "No Dashii",
+    "type": "demon",
+    "description": "Each night*, choose a player: they die. Your 2 Townsfolk neighbors are poisoned.",
+    "reminders": {
+      "poisoned": {
+        "name": "POISONED"
+      },
+      "poisoned_2": {
+        "name": "POISONED"
+      },
+      "dead": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "vortox": {
+    "name": "Vortox",
+    "type": "demon",
+    "description": "Each night*, choose a player: they die. Townsfolk abilities yield false info. Each day, if no-one is executed, evil wins.",
+    "reminders": {
+      "dead": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "butcher": {
+    "name": "Butcher",
+    "type": "traveller",
+    "description": "Each day, after the 1st execution, you may nominate again."
+  },
+  "bonecollector": {
+    "name": "Bone Collector",
+    "type": "traveller",
+    "description": "Once per game, at night*, choose a dead player: they regain their ability until dusk.",
+    "reminders": {
+      "has_ability": {
+        "name": "HAS ABILITY"
+      },
+      "no_ability": {
+        "name": "NO ABILITY"
+      }
+    }
+  },
+  "harlot": {
+    "name": "Harlot",
+    "type": "traveller",
+    "description": "Each night*, choose a living player: if they agree, you learn their character, but you both might die.",
+    "reminders": {
+      "dead": {
+        "name": "DEAD"
+      }
+    }
+  },
+  "barista": {
+    "name": "Barista",
+    "type": "traveller",
+    "description": "Each night, until dusk, 1) a player becomes sober, healthy & gets true info, or 2) their ability works twice. They learn which.",
+    "reminders": {
+      "sober_and_healthy": {
+        "name": "SOBER AND HEALTHY"
+      },
+      "acts_twice": {
+        "name": "ACTS TWICE"
+      },
+      "questionmark": {
+        "name": "?"
+      },
+      "questionmark_2": {
+        "name": "?"
+      }
+    }
+  },
+  "deviant": {
+    "name": "Deviant",
+    "type": "traveller",
+    "description": "If you were funny today, you cannot die by exile."
+  }
+}

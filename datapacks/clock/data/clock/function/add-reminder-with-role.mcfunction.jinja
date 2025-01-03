@@ -1,0 +1,24 @@
+$execute unless data storage clock:roles $(role).enabled run return 1
+$execute unless data storage clock:roles $(role).reminders run return 1
+{% set command -%}
+/function clock:add-reminder-from-role {role: $(role), player: $(player)}
+{% endset %}
+
+{% set text %}
+{
+   "text": "",
+   "extra": [
+     {
+       "storage": "clock:roles",
+       "nbt": "$(role).name",
+       "interpret": true
+     }
+   ],
+   "clickEvent": {
+     "action": "run_command",
+     "value": {{ command | json }}
+   }
+}
+{% endset %}
+
+$tellraw @s {{ text | min_json }}

@@ -1,0 +1,11 @@
+{% for i in player_indices() -%}
+tag @s remove clock.player{{ i }}
+{% endfor -%}
+tag @s add clock.storyteller
+team join clock.main
+effect give @s minecraft:invisibility infinite 1 true
+execute as @a run function clock:give-players-book
+function clock:update-signs
+function clock:get-command-book
+function clock:give-rulebook-interactive
+function clock:give-script-book

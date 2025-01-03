@@ -1,0 +1,6 @@
+{% for i in player_indices() -%}
+function clock:pick-random-role {player: player{{ i }}}
+{% endfor -%}
+function clock:clear-reminders
+function clock:grimoire-set-reminders
+schedule function clock:give-grimoire 5

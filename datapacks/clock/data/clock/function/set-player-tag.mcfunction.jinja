@@ -1,0 +1,5 @@
+{% for i in player_indices() -%}
+tag @s remove clock.player{{ i }}
+{% endfor -%}
+team join clock.main
+$tag @s add clock.$(player)

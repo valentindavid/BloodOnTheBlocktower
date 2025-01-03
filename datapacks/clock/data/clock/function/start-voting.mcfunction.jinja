@@ -1,0 +1,10 @@
+$data modify storage clock:positions vote-lights.current set from storage clock:positions vote-lights.$(first)
+$data modify storage clock:positions vote-lights.current.player set value $(first)
+{% for i in player_indices() -%}
+data remove storage clock:votes player{{ i }}
+{% endfor -%}
+scoreboard players reset @e[type=#clock:player] clock.votes
+scoreboard players reset @e[type=#clock:player] clock.alive-voters
+scoreboard players set @e[type=#clock:player,tag=clock.nominated] clock.votes 0
+scoreboard players set @e[type=#clock:player,tag=clock.nominated] clock.alive-votes 0
+function clock:lock-vote-next

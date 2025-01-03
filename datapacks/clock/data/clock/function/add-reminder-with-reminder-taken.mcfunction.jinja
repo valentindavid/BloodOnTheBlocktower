@@ -1,0 +1,30 @@
+{% set command -%}
+/function clock:add-reminder-set-reminder {role: $(role), reminder: $(reminder), player: $(player)}
+{% endset %}
+
+{% set text %}
+[
+  "",
+  {
+    "text": "",
+    "color": "green",
+    "extra": [
+      {
+        "storage": "clock:roles",
+        "nbt": "$(role).reminders.$(reminder).name"
+      }
+    ],
+    "clickEvent": {
+      "action": "run_command",
+      "value": {{ command | json }}
+    }
+  },
+  " (removed from ",
+  {
+    "selector": "@e[type=#clock:player,tag=clock.$(other_player)]"
+  },
+  ")"
+]
+{% endset %}
+
+$tellraw @s {{ text | min_json }}

@@ -1,0 +1,129 @@
+{
+  "doomsayer": {
+    "name": "Doomsayer",
+    "type": "fabled",
+    "description": "If 4 or more players live, each living player may publicly choose (once per game) that a player of their own alignment dies."
+  },
+  "angel": {
+    "name": "Angel",
+    "type": "fabled",
+    "description": "Something bad might happen to whoever is most responsible for the death of a new player.",
+    "reminders": {
+      "protected": {
+        "name": "PROTECTED"
+      },
+      "protected_2": {
+        "name": "PROTECTED"
+      },
+      "something_bad": {
+        "name": "SOMETHING BAD"
+      },
+      "something_bad_2": {
+        "name": "SOMETHING BAD"
+      }
+    }
+  },
+  "buddhist": {
+    "name": "Buddhist",
+    "type": "fabled",
+    "description": "For the first 2 minutes of each day, veteran players may not talk."
+  },
+  "hellslibrarian": {
+    "name": "Hell's Librarian",
+    "type": "fabled",
+    "description": "Something bad might happen to whoever talks when the Storyteller has asked for silence.",
+    "reminders": {
+      "something_bad": {
+        "name": "SOMETHING BAD"
+      },
+      "something_bad_2": {
+        "name": "SOMETHING BAD"
+      },
+      "something_bad_3": {
+        "name": "SOMETHING BAD"
+      }
+    }
+  },
+  "revolutionary": {
+    "name": "Revolutionary",
+    "type": "fabled",
+    "description": "2 neighboring players are known to be the same alignment. Once per game, 1 of them registers falsely.",
+    "reminders": {
+      "register_falselyquestionmark": {
+        "name": "REGISTER FALSELY?"
+      }
+    }
+  },
+  "fiddler": {
+    "name": "Fiddler",
+    "type": "fabled",
+    "description": "Once per game, the Demon secretly chooses an opposing player: all players choose which of these 2 players win."
+  },
+  "toymaker": {
+    "name": "Toymaker",
+    "type": "fabled",
+    "description": "The Demon may choose not to attack & must do this at least once per game. Evil players get normal starting info."
+  },
+  "fibbin": {
+    "name": "Fibbin",
+    "type": "fabled",
+    "description": "Once per game, 1 good player might get incorrect information.",
+    "reminders": {
+      "no_ability": {
+        "name": "NO ABILITY"
+      }
+    }
+  },
+  "duchess": {
+    "name": "Duchess",
+    "type": "fabled",
+    "description": "Each day, 3 players may choose to visit you. At night*, each visitor learns how many visitors are evil, but 1 gets false info.",
+    "reminders": {
+      "visitor": {
+        "name": "VISITOR"
+      },
+      "visitor_2": {
+        "name": "VISITOR"
+      },
+      "false_info": {
+        "name": "FALSE INFO"
+      }
+    }
+  },
+  "sentinel": {
+    "name": "Sentinel",
+    "type": "fabled",
+    "description": "There might be 1 extra or 1 fewer Outsider in play."
+  },
+  "spiritofivory": {
+    "name": "Spirit of Ivory",
+    "type": "fabled",
+    "description": "There can't be more than 1 extra evil player.",
+    "reminders": {
+      "no_more_evil": {
+        "name": "NO MORE EVIL"
+      },
+      "no_more_evil_2": {
+        "name": "NO MORE EVIL"
+      },
+      "no_more_evil_3": {
+        "name": "NO MORE EVIL"
+      }
+    }
+  },
+  "djinn": {
+    "name": "Djinn",
+    "type": "fabled",
+    "description": "Use the Djinn's special rule. All players know what it is."
+  },
+  "bootlegger": {
+    "name": "Bootlegger",
+    "type": "fabled",
+    "description": "This script has homebrew characters or rules."
+  },
+  "gardener": {
+    "name": "Gardener",
+    "type": "fabled",
+    "description": "The Storyteller assigns 1 or more players' characters."
+  }
+}

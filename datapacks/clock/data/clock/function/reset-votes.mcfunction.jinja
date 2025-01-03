@@ -1,0 +1,3 @@
+{% for i in player_indices() -%}
+function clock:reset-votes-one with storage clock:positions vote-lights.player{{ i }}
+{% endfor -%}

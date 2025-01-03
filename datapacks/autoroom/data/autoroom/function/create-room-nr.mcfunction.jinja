@@ -1,0 +1,8 @@
+clear @s item_frame[custom_data={'autoroom:clean-me':true}]
+
+$give @s minecraft:item_frame[custom_data={'mapper:replace-me':true,'autoroom:clean-me':true},entity_data={id:'minecraft:item_frame',Tags:['mapper.replace-me'],Item:{id:'minecraft:paper',components:{'minecraft:custom_data':{'mapper:function':{'namespace':'autoroom','function':'start-room'},'mapper:params':{'room': '$(room)'}}}}},item_name='"Start room $(room)"']
+$give @s minecraft:item_frame[custom_data={'mapper:replace-me':true,'autoroom:clean-me':true},entity_data={id:'minecraft:item_frame',Tags:['mapper.replace-me'],Item:{id:'minecraft:paper',components:{'minecraft:custom_data':{'mapper:function':{'namespace':'autoroom','function':'end-room'},'mapper:params':{'room': '$(room)'}}}}},item_name='"End room $(room)"']
+
+{% for n in range(1, 5) -%}
+$give @s minecraft:item_frame[custom_data={'mapper:replace-me':true,'autoroom:clean-me':true},entity_data={id:'minecraft:item_frame',Tags:['mapper.replace-me'],Item:{id:'minecraft:paper',components:{'minecraft:custom_data':{'mapper:function':{'namespace':'autoroom','function':'set-marker'},'mapper:params':{'room': '$(room)', 'marker': {{n}}}}}}},item_name='"Set marker {{ n }} for room $(room)"']
+{% endfor %}
