@@ -1,5 +1,5 @@
 import os
-from jinja2 import Environment, FileSystemLoader, select_autoescape
+from jinja2 import Environment, FileSystemLoader, select_autoescape, BaseLoader
 import re
 from io import StringIO
 from json import dump as json_dump
@@ -10,6 +10,21 @@ import collections
 import itertools
 import argparse
 
+
+class DependencyTracker(BaseLoader):
+    def __init__(self, loader):
+        self._loader = loader
+        self._dependencies = set()
+
+    def get_source(self, environment, template):
+        source, filename, uptodate = self._loader.get_source(environment, template)
+        self._dependencies.add(filename)
+        return source, filename, uptodate
+
+    def get_dependencies(self):
+        ret = self._dependencies
+        self._dependencies = set()
+        return ret
 
 def jglobal(env):
     def ret(obj):
@@ -29,8 +44,9 @@ def jtest(env):
         return obj
     return ret
 
+loader = DependencyTracker(FileSystemLoader("."))
 env = Environment(
-    loader=FileSystemLoader("."),
+    loader=loader,
     autoescape=select_autoescape(),
     keep_trailing_newline=True,
 )
@@ -102,6 +118,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--players', type=int, default=8)
     parser.add_argument('--roles', default='.')
+    parser.add_argument('--write-deps')
     parser.add_argument('unit', nargs='+')
     args = parser.parse_args()
 
@@ -109,6 +126,11 @@ def main():
     players = args.players
     for unit in args.unit:
         expand(unit)
+        if args.write_deps:
+            os.makedirs(os.path.dirname(args.write_deps), exist_ok=True)
+            with open(args.write_deps, 'w') as f:
+                for dep in loader.get_dependencies():
+                    f.write(f'{unit}: {dep}\n')
 
 if __name__ == '__main__':
     main()

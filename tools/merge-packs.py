@@ -52,7 +52,7 @@ def main():
                         continue
                     if f == 'README.md':
                         continue
-                    if f.endswith("~") or f.endswith(".jinja"):
+                    if f.endswith("~") or f.endswith(".jinja") or f.endswith(".dep"):
                         continue
                     path = os.path.join(root, f)
                     relpath = os.path.relpath(path, datapack)
