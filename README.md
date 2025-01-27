@@ -38,6 +38,15 @@ resource packs.
 
 See [BUILD.md](BUILD.md).
 
+## Setup
+
+Follow the setup instructions for the sub data packs:
+  * [`autoroom`](datapacks/autoroom/README.md)
+  * [`clock`](datapacks/clock/README.md)
+
+There is a video explanation of the setup available:
+[Blood on the Clocktower in Minecraft: a data pack](https://www.youtube.com/watch?v=9Q6nJ_8ZaS8).
+
 ## Details
 
 See the README for the different components.
