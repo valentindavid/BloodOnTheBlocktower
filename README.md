@@ -1,5 +1,45 @@
 # Blood on the Clocktower in Minecraft
 
+## Requirements
+
+This is for Minecraft Java edition 1.21.4.
+
+[Simple Voice Chat](https://modrepo.de/minecraft/voicechat/overview)
+must be installed on the server and clients.
+
+[Simple Voice Chat Enhanced Groups](https://modrepo.de/minecraft/voicechat/addons#simple-voice-chat-enhanced-groups)
+must be installed on the server.
+
+## Installation
+
+You should get two files from either the
+[release](https://github.com/valentindavid/BloodOnTheBlocktower/releases)
+or from [building](BUILD.md): `clock-datapack-*.zip` and
+`clock-resourcepack-*.zip`.
+
+`clock-datapack-*.zip` has to be placed in the `datapacks` directory
+in your world directory. Your world directory should have the same
+name as `level-name` entry in `server.properties`. The default is
+`world` from the root of the server.
+
+The URL to the resource pack has to be placed in `server.properties`,
+in entry `resource-pack`. Like such:
+
+```
+resource-pack=https\://github.com/valentindavid/BloodOnTheBlocktower/releases/download/X.Y/clock-resourcepack-X.Y.zip
+```
+
+Alternatively, you can host the file yourself.
+
+If your server has already a resource pack, you will need to merge the
+resource packs.
+
+## Building
+
+See [BUILD.md](BUILD.md).
+
+## Details
+
 See the README for the different components.
 
 * `resourcepacks/`: resource packs
@@ -10,20 +50,4 @@ See the README for the different components.
   * [`timer/`](datapacks/timer/README.md) Utility to schedule every half and full second
   * [`autoroom/`](datapacks/autoroom/README.md) Automatic chat rooms
   * [`clock/`](datapacks/clock/README.md) The game logic
-
-## Installation
-
-### Data packs
-
-Each data pack should be copied into `datapacks` directory of the
-world directory of the server. They can also provided as zip files.
-
-The world directory on a server is `world` by default, unless changed
-in `level-name` entry in the `server.properties`.
-
-### Resource packs
-
-There is only one resource pack. It should be zipped and provided by
-an HTTP(s) server. The URL for it should be added to `resource-pack`
-entry of `server.properties`. Before being zipped, follow the
-instructions in its [README.md](resourcepacks/clock/README.md).
+  * [`mapping/`](mapping/clock/README.md) Mapping utility
