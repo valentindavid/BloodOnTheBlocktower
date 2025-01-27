@@ -48,7 +48,7 @@ def main():
         for datapack in [args.main] + args.dependencies:
             for root, dirs, files in os.walk(datapack):
                 for f in files:
-                    if root != 'clock' and f == 'pack.mcmeta':
+                    if f == 'pack.mcmeta' and not os.path.samefile(os.path.join(root, f), os.path.join(args.main, 'pack.mcmeta')):
                         continue
                     if f == 'README.md':
                         continue
